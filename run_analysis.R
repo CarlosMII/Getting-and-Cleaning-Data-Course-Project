@@ -27,7 +27,7 @@ y_train <- read.table("UCI HAR Dataset/train/y_text.txt", col.names = "code")
 #1 Merges the training and the test sets to create one data set.
 
 X <- rbind(x_train, x_test)
-y <- rbind(y_train, y_test)
+Y <- rbind(y_train, y_test)
 Subject <- rbind(subject_train, subject_test)
 Merged_Data <- cbind(Subject, Y, X)
 
@@ -48,7 +48,7 @@ names(TidyData) <- gsub("BodyBody", "Body", names(TidyData))
 names(TidyData) <- gsub("Mag", "Magnitude", names(TidyData))
 names(TidyData) <- gsub("^t", "Time", names(TidyData))
 names(TidyData) <- gsub("^f", "Frequency", names(TidyData))
-names(TidyData) <- gsub("tbody", "TimeBody", names(TidayData))
+names(TidyData) <- gsub("tbody", "TimeBody", names(TidyData))
 names(TidyData) <- gsub("-mean()", "Mean", names(TidyData), ignore.case = TRUE)
 names(TidyData) <- gsub("=std()", "STD", names(TidyData), ignore.case = TRUE)
 names(TidyData) <- gsub("-freq()", "Frequency", names(TidyData), ignore.case = TRUE)
@@ -59,5 +59,5 @@ names(TidyData) <- gsub("gravity", "Gravity", names(TidyData))
 
 FinalData <- TidyData %>%
   group_by(subject, activity) %>%
-  summarise_all(funs(mean))
+  summarise_all(mean)
 write.table(FinalData, "FinalData.txt", row.name = FALSE)
