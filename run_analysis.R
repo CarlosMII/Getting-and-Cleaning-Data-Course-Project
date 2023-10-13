@@ -33,7 +33,7 @@ Merged_Data <- cbind(Subject, Y, X)
 
 #2 Extracts only the measurements on the mean and standard deviation for each measurement. 
 
-TidyData <- Merged_data %>% select(subject, code, contains("mean"), contains("std"))
+TidyData <- Merged_Data %>% select(subject, code, contains("mean"), contains("std"))
 
 #3 Uses descriptive activity names to name the activities in the data set
 
